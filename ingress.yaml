@@ -16,6 +16,12 @@ spec:
       - backend:
           serviceName: frontend-service
           servicePort: 80
+  - host: welcome.happyhamster.org
+    http:
+      paths:
+      - backend:
+          serviceName: welcome-service
+          servicePort: 80
   - host: api.happyhamster.org
     http:
       paths:
