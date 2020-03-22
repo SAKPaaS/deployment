@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sakpaas-backend
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: sakpaas/backend:release-1.2.5
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: spring.datasource.url
+          value: jdbc:postgresql://10.60.6.56:5432/postgres
+        - name: spring.datasource.username
+          value: postgres
+        - name: spring.datasource.password
+          value: test123
+        - name: server.servlet.context-path
+          value: /sakpaas
+
+      
