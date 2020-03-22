@@ -11,7 +11,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: backend-api
+          serviceName: backend-service
           servicePort: 8080
   - host: happyhamster.robspot.de
     http:

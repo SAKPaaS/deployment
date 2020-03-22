@@ -4,4 +4,4 @@ metadata:
   name: frontend-certificate
 spec:
   domains:
-    - shop-go.org
+    - happyhamster.org
