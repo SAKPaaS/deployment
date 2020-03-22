@@ -6,6 +6,9 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: sakpaas-ip
     networking.gke.io/managed-certificates: "frontend-certificate,backend-certificate,frontend-certificate-robspot,backend-certificate-robspot"
 spec:
+  backend:
+    serviceName: frontend-service
+    servicePort: 80
   rules:
   - host: happyhamster.org
     http:
