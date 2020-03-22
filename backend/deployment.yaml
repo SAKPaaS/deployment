@@ -27,5 +27,3 @@ spec:
           value: postgres
         - name: spring.datasource.password
           value: test123
-        - name: server.servlet.context-path
-          value: /
