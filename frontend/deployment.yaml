@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: sakpaas/frontend:release-1.4.6
+        image: sakpaas/frontend:release-1.4.7
         imagePullPolicy: Always
         ports:
         - containerPort: 80
