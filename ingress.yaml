@@ -46,3 +46,9 @@ spec:
       - backend:
           serviceName: grafana-service
           servicePort: 80
+  - host: api.dev.happyhamster.org
+    http:
+      paths:
+      - backend:
+          serviceName: backend-dev-service
+          servicePort: 80
