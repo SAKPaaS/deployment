@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sakpaas-welcome-development
+  labels:
+    app: welcome-development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: welcome-development
+  template:
+    metadata:
+      labels:
+        app: welcome-development
+    spec:
+      containers:
+      - name: welcome-development
+        image: sakpaas/welcome:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
