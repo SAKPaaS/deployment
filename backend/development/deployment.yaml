@@ -4,6 +4,7 @@ metadata:
   name: sakpaas-backend-development
   labels:
     app: backend-development
+    base: spring
 spec:
   replicas: 1
   selector:

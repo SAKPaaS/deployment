@@ -3,6 +3,7 @@ kind: Kustomization
 
 commonLabels:
   app: frontend-development
+  environment: deployment
 
 resources:
   - deployment.yaml

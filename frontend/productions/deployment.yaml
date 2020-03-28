@@ -4,6 +4,7 @@ metadata:
   name: sakpaas-frontend
   labels:
     app: frontend
+    base: nginx
 spec:
   replicas: 1
   selector:
