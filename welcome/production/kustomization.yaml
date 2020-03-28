@@ -3,7 +3,6 @@ kind: Kustomization
 
 commonLabels:
   app: welcome
-  environment: production
 
 resources:
   - deployment.yaml
