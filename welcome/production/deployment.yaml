@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: welcome
-        image: sakpaas/welcome:latest
+        image: sakpaas/welcome:release-1.2
         imagePullPolicy: Always
         ports:
         - containerPort: 80
