@@ -4,7 +4,7 @@ metadata:
   name: sakpaas-ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: sakpaas-ip
-    networking.gke.io/managed-certificates: "frontend-certificate,backend-certificate,welcome-certificate,backend-development-certificate,grafana-certificate"
+    networking.gke.io/managed-certificates: "frontend-certificate,backend-certificate,welcome-certificate,grafana-certificate"
 spec:
   backend:
     serviceName: frontend-service
@@ -33,10 +33,4 @@ spec:
       paths:
       - backend:
           serviceName: grafana-service
-          servicePort: 80
-  - host: api.dev.happyhamster.org
-    http:
-      paths:
-      - backend:
-          serviceName: backend-dev-service
           servicePort: 80
