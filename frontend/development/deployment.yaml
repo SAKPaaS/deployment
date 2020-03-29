@@ -17,7 +17,13 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: sakpaas/frontend:latest
+        image: sakpaas/frontend:release-1.5.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        livenessProbe:
+          httpGet:
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
