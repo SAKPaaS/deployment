@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: grafana
 spec:
   replicas: 1
+  serviceName: "grafana"
   selector:
     matchLabels:
       app: grafana
@@ -27,8 +28,7 @@ spec:
             readOnly: false
       volumes:
         - name: grafana-storage
-          persistentVolumeClaim:
-            claimName: grafana-data
+          emptyDir: {}
         - name: grafana-datasources
           configMap:
               defaultMode: 420
