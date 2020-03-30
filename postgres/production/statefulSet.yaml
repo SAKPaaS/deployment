@@ -1,11 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: postgres
   labels:
     app: postgres
 spec:
   replicas: 1
+  serviceName: "postgres"
   selector:
     matchLabels:
       app: postgres
@@ -23,3 +24,16 @@ spec:
         env:
         - name: POSTGRES_PASSWORD
           value: test123
+        - name: PGDATA
+          value: /var/lib/postgresql/data/db
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgres-pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-pvc
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 2Gi
