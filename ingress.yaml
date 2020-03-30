@@ -6,9 +6,6 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: sakpaas-ip
     networking.gke.io/managed-certificates: "frontend-certificate,backend-certificate,welcome-certificate,backend-development-certificate,frontend-dev-certificate"
 spec:
-  backend:
-    serviceName: frontend-service
-    servicePort: 80
   rules:
   - host: happyhamster.org
     http:
