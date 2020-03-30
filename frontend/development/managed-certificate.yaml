@@ -1,7 +1,7 @@
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
-  name: grafana-certificate
+  name: frontend-dev-certificate
 spec:
   domains:
-    - stats.happyhamster.org
+    - dev.happyhamster.org
