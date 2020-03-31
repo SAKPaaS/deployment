@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: development-ingress-development
+  labels:
+    app: development-ingress
+    base: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: development-ingress
+  template:
+    metadata:
+      labels:
+        app: development-ingress
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d/
+              readOnly: true
+              name: development-ingress-config
+      volumes:
+        - name: development-ingress-config
+          configMap:
+            name: development-ingress-config
