@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-development-management-service
+spec:
+  selector:
+    app: backend-development
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 9000
+    protocol: TCP
+    targetPort: 9000

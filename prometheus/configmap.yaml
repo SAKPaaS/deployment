@@ -16,7 +16,7 @@ data:
     # Here it's Prometheus itself.
     scrape_configs:
       # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-      - job_name: 'prometheus'
+      - job_name: 'prod'
 
         # Override the global default and scrape targets from this job every 5 seconds.
         scrape_interval: 5s
@@ -24,3 +24,12 @@ data:
 
         static_configs:
           - targets: ['backend-management-service:9000']
+
+      - job_name: 'dev'
+
+        # Override the global default and scrape targets from this job every 5 seconds.
+        scrape_interval: 30s
+        metrics_path: /actuator/prometheus
+
+        static_configs:
+          - targets: ['backend-development-management-service:9000']
