@@ -29,11 +29,5 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: development-ingress-service
-          servicePort: 80
-  - host: api.dev.happyhamster.org
-    http:
-      paths:
-      - backend:
-          serviceName: development-ingress-service
+          serviceName: frontend-dev-service
           servicePort: 80
