@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: development-ingress-development
+  name: proxy-development-development
   labels:
-    app: development-ingress
+    app: proxy-development
     base: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: development-ingress
+      app: proxy-development
   template:
     metadata:
       labels:
-        app: development-ingress
+        app: proxy-development
     spec:
       containers:
         - name: nginx
@@ -24,8 +24,8 @@ spec:
           volumeMounts:
             - mountPath: /etc/nginx/conf.d/
               readOnly: true
-              name: development-ingress-config
+              name: proxy-development-config
       volumes:
-        - name: development-ingress-config
+        - name: proxy-development-config
           configMap:
-            name: development-ingress-config
+            name: proxy-development-config
