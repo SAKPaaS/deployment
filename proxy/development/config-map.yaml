@@ -3,6 +3,13 @@ kind: ConfigMap
 metadata:
   name: proxy-development-config
 data:
+  map-directive.conf: |-
+    # https://serverfault.com/a/516382
+    map $http_x_forwarded_proto $forward_scheme {
+      default $scheme;
+      https https;
+    }
+
   frontend-development.conf: |-
     # frontend development
     server {
@@ -21,7 +28,7 @@ data:
         proxy_set_header Host              $host;
         proxy_set_header X-Real-IP         $remote_addr;
         proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Proto $forward_scheme;
         proxy_set_header X-Forwarded-Host  $host;
         proxy_set_header X-Forwarded-Port  $server_port;
       }
@@ -45,7 +52,7 @@ data:
         proxy_set_header Host              $host;
         proxy_set_header X-Real-IP         $remote_addr;
         proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Proto $forward_scheme;
         proxy_set_header X-Forwarded-Host  $host;
         proxy_set_header X-Forwarded-Port  $server_port;
       }
@@ -69,7 +76,7 @@ data:
         proxy_set_header Host              $host;
         proxy_set_header X-Real-IP         $remote_addr;
         proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Proto $forward_scheme;
         proxy_set_header X-Forwarded-Host  $host;
         proxy_set_header X-Forwarded-Port  $server_port;
       }
