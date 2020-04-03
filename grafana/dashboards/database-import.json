@@ -850,11 +850,11 @@
     ]
   },
   "timezone": "",
-  "title": "Database Update",
-  "uid": "wBkbO3rWz",
+  "title": "Database Import",
+  "uid": "database-import",
   "variables": {
     "list": []
   },
-  "version": 24
+  "version": 25
 }
 
