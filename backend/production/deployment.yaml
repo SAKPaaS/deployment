@@ -28,6 +28,9 @@ spec:
           value: postgres
         - name: spring.datasource.password
           value: test123
+        # Occupancy calculation is currently broken for longer durations, so we have to lower the default value of 300
+        - name: app.occupancy.duration
+          value: "120"
         readinessProbe:
           httpGet:
             port: 8080
