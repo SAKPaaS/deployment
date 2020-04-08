@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-development-wellknown-config-map
+data:
+  assetlinks.json: |-
+    [{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "org.happyhamster.happyhamster",
+        "sha256_cert_fingerprints":["enter_fingerprint_here"]
+      }
+    }]

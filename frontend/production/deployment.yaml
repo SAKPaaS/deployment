@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: sakpaas/frontend:release-1.5.0
+        image: sakpaas/frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -26,3 +26,11 @@ spec:
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
+        volumeMounts:
+        - name: frontend-wellknown-config-map
+          mountPath: /usr/share/nginx/html/.well-known/assetlinks.json
+          subPath: assetlinks.json
+      volumes:
+        - name: frontend-wellknown-config-map
+          configMap:
+            name: frontend-wellknown-config-map
