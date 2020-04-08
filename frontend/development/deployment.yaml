@@ -31,7 +31,7 @@ spec:
             mountPath: /usr/share/nginx/html/config/config.json
             subPath: config.json
             readOnly: true
-          - name: frontend-development-wellknown-config-map
+          - name: frontend-development-config
             mountPath: /usr/share/nginx/html/.well-known/assetlinks.json
             subPath: assetlinks.json
             readOnly: true
@@ -39,6 +39,3 @@ spec:
         - name: frontend-development-config
           configMap:
             name: frontend-development-config
-        - name: frontend-development-wellknown-config-map
-          configMap:
-            name: frontend-development-wellknown-config-map
