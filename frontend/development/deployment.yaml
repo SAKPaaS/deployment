@@ -27,10 +27,18 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 5
         volumeMounts:
+          - name: frontend-development-config
+            mountPath: /usr/share/nginx/html/config/config.json
+            subPath: config.json
+            readOnly: true
           - name: frontend-development-wellknown-config-map
             mountPath: /usr/share/nginx/html/.well-known/assetlinks.json
             subPath: assetlinks.json
+            readOnly: true
       volumes:
+        - name: frontend-development-config
+          configMap:
+            name: frontend-development-config
         - name: frontend-development-wellknown-config-map
           configMap:
             name: frontend-development-wellknown-config-map
