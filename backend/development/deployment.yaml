@@ -28,6 +28,17 @@ spec:
           value: postgres
         - name: spring.datasource.password
           value: test123
+        - name: keycloak.auth-server-url
+          value: https://auth.happyhamster.org/auth/
+        - name: keycloak.realm
+          value: happyhamster
+        - name: keycloak.resource
+          value: backend
+        - name: keycloak.credentials.secret
+          valueFrom:
+            secretKeyRef:
+              name: keycloak-secret
+              key: key.txt
         readinessProbe:
           httpGet:
             port: 8080
