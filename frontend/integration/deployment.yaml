@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sakpaas-frontend-integration
+  labels:
+    app: frontend-integration
+    environment: integration
+    base: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-integration
+      environment: integration
+  template:
+    metadata:
+      labels:
+        app: frontend-integration
+        environment: integration
+    spec:
+      containers:
+        - name: frontend
+          image: sakpaas/frontend:integration
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            requests:
+              memory: "20Mi"
+              cpu: "10m"
+            limits:
+              memory: "100Mi"
+              cpu: "100m"
+          volumeMounts:
+            - name: frontend-integration-config
+              mountPath: /usr/share/nginx/html/config/config.json
+              subPath: config.json
+              readOnly: true
+            - name: frontend-integration-config
+              mountPath: /usr/share/nginx/html/.well-known/assetlinks.json
+              subPath: assetlinks.json
+              readOnly: true
+            - name: frontend-integration-config
+              mountPath: /usr/share/nginx/html/robots.txt
+              subPath: robots.txt
+              readOnly: true
+      volumes:
+        - name: frontend-integration-config
+          configMap:
+            name: frontend-integration-config

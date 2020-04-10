@@ -1,11 +1,14 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: frontend-development-config
+  name: frontend-integration-config
+  labels:
+    app: frontend-integration
+    environment: integration
 data:
   config.json: |-
     {
-      "rootUrl": "https://api.dev.happyhamster.org"
+      "rootUrl": "https://api.happyhamster.org"
     }
   assetlinks.json: |-
     [{
