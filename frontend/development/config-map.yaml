@@ -16,3 +16,6 @@ data:
         "sha256_cert_fingerprints":["enter_fingerprint_here"]
       }
     }]
+  robots.txt: |-
+    User-agent: *
+    Disallow: /

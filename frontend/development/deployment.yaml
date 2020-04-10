@@ -35,6 +35,10 @@ spec:
             mountPath: /usr/share/nginx/html/.well-known/assetlinks.json
             subPath: assetlinks.json
             readOnly: true
+          - name: frontend-development-config
+            mountPath: /usr/share/nginx/html/robots.txt
+            subPath: robots.txt
+            readOnly: true
       volumes:
         - name: frontend-development-config
           configMap:
