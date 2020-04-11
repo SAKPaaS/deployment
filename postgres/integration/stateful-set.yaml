@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-integration
+  labels:
+    app: postgres-integration
+    environment: integration
+    base: postgres
+spec:
+  replicas: 1
+  serviceName: postgres-integration
+  selector:
+    matchLabels:
+      app: postgres-integration
+      environment: integration
+  template:
+    metadata:
+      labels:
+        app: postgres-integration
+        environment: integration
+    spec:
+      containers:
+      - name: postgres-integration
+        image: postgres
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          value: test123
+        - name: PGDATA
+          value: /var/lib/postgresql/data/db
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgres-integration-pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-integration-pvc
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
