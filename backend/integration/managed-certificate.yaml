@@ -1,0 +1,10 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: backend-integration-certificate
+  labels:
+    app: backend-integration
+    environment: integration
+spec:
+  domains:
+    - api.int.happyhamster.org

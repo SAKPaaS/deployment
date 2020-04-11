@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sakpaas-backend-integration
+  labels:
+    app: backend-integration
+    environment: integration
+    base: spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-integration
+      environment: integration
+  template:
+    metadata:
+      labels:
+        app: backend-integration
+        environment: integration
+    spec:
+      containers:
+      - name: backend
+        image: sakpaas/backend:integration
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: spring.datasource.url
+          value: jdbc:postgresql://postgres:5432/postgres
+        - name: spring.datasource.username
+          value: postgres
+        - name: spring.datasource.password
+          value: test123
+        readinessProbe:
+          httpGet:
+            port: 8080
+          failureThreshold: 20
+          periodSeconds: 10
+        resources:
+          limits:
+            cpu: 100m
+          requests:
+            cpu: 10m
