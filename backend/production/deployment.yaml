@@ -28,6 +28,19 @@ spec:
           value: postgres
         - name: spring.datasource.password
           value: test123
+        - name: keycloak.auth-server-url
+          value: https://auth.happyhamster.org/auth/
+        - name: keycloak.realm
+          value: happyhamster
+        - name: keycloak.resource
+          value: backend
+        - name: keycloak.enabled
+          value: "true"
+        - name: keycloak.credentials.secret
+          valueFrom:
+            secretKeyRef:
+              name: keycloak-secret
+              key: key.txt
         # Occupancy calculation is currently broken for longer durations, so we have to lower the default value of 300
         - name: app.occupancy.duration
           value: "120"

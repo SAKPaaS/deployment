@@ -34,6 +34,8 @@ spec:
           value: happyhamster
         - name: keycloak.resource
           value: backend
+        - name: keycloak.enabled
+          value: "true"
         - name: keycloak.credentials.secret
           valueFrom:
             secretKeyRef:
