@@ -4,11 +4,11 @@ metadata:
   name: postgres-keycloak
   labels:
     app: postgres-keycloak
-    environment: keycloak
+    environment: production
 spec:
   selector:
     app: postgres-keycloak
-    environment: keycloak
+    environment: production
   type: ClusterIP
   ports:
   - protocol: TCP

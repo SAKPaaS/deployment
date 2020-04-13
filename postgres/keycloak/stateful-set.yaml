@@ -4,7 +4,7 @@ metadata:
   name: postgres-keycloak
   labels:
     app: postgres-keycloak
-    environment: keycloak
+    environment: production
     base: postgres
 spec:
   replicas: 1
@@ -12,12 +12,12 @@ spec:
   selector:
     matchLabels:
       app: postgres-keycloak
-      environment: keycloak
+      environment: production
   template:
     metadata:
       labels:
         app: postgres-keycloak
-        environment: keycloak
+        environment: production
     spec:
       containers:
       - name: postgres-keycloak
