@@ -26,13 +26,15 @@ spec:
         - name: DB_VENDOR
           value: postgres
         - name: DB_ADDR
-          value: 10.60.1.29/postgres
+          value: postgres-keycloak
         - name: DB_USER
           value: postgres
         - name: DB_PASSWORD
           value: test123
         - name: DB_PORT
-          value: 5432
+          value: "5432"
+        - name: DB_DATABASE
+          value: postgres
         ports:
         - name: http
           containerPort: 8080

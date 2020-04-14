@@ -129,3 +129,22 @@ data:
         proxy_set_header X-Forwarded-Port  $server_port;
       }
     }
+
+  keycloak.conf: |-
+    # keycloak
+    server {
+      # HTTP on port 80
+      listen       80;
+      server_name  auth.happyhamster.org;
+
+      # This location references every path
+      location / {
+        proxy_pass          https://keycloak-service;
+        proxy_ssl_verify    off;
+
+
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host  $host;
+        proxy_set_header X-Forwarded-Port  443;
+      }
+    }
