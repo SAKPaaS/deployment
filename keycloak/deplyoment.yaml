@@ -2,16 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: keycloak
-  namespace: default
+  enviroment: production
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: keycloak
+      enviroment: production
   template:
     metadata:
       labels:
         app: keycloak
+        enviroment: production
     spec:
       containers:
       - name: keycloak
