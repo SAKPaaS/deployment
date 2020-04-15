@@ -36,6 +36,8 @@ spec:
           value: backend
         - name: keycloak.enabled
           value: "true"
+        - name: app.search-api-url
+          value: https://nominatim.openstreetmap.org
         - name: keycloak.credentials.secret
           valueFrom:
             secretKeyRef:
