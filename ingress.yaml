@@ -4,7 +4,7 @@ metadata:
   name: sakpaas-ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: sakpaas-ip
-    networking.gke.io/managed-certificates: "frontend-certificate,backend-certificate,welcome-certificate,backend-development-certificate,frontend-dev-certificate,frontend-www-certificate,frontend-integration-certificate,backend-integration-certificate,keycloak-certificate"
+    networking.gke.io/managed-certificates: "frontend-certificate,backend-certificate,welcome-certificate,backend-development-certificate,frontend-dev-certificate,frontend-www-certificate,frontend-integration-certificate,backend-integration-certificate,keycloak-certificate,documentation-certificate"
 spec:
   rules:
   - host: happyhamster.org
@@ -67,4 +67,9 @@ spec:
       - backend:
           serviceName: proxy-development-service
           servicePort: 80
-      
+  - host: docs.happyhamster.org
+    http:
+      paths:
+      - backend:
+          serviceName: proxy-development-service
+          servicePort: 80

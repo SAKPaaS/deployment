@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: documentation-service
+  labels:
+    app: documentation
+    environment: production
+spec:
+  selector:
+      app: documentation
+      environment: production
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      protocol: TCP
+      targetPort: 8080
