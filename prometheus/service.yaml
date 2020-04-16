@@ -2,9 +2,13 @@ kind: Service
 apiVersion: v1
 metadata:
   name: prometheus-service
+  labels:
+    app: prometheus
+    environment: monitoring
 spec:
   selector:
     app: prometheus
+    environment: monitoring
   ports:
   - name: promui
     protocol: TCP
