@@ -6,7 +6,10 @@ metadata:
     app: welcome-development
     base: nginx
 spec:
-  replicas: 1
+  # The deployment was scaled to 0, as it was not configured in the ingress.
+  # But this file has to be here, as it is being used by the GitHub Action
+  # of github.com/SAKPaaS/welcome
+  replicas: 0
   selector:
     matchLabels:
       app: welcome-development
