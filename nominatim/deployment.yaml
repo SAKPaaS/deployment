@@ -4,11 +4,15 @@ metadata:
   name: nominatim
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+      environment: production
   template:
     metadata:
       labels:
         app: nominatim
-        track: stable
+        environment: production
     spec:
       volumes:
       - name: nominatim-secret-volume
