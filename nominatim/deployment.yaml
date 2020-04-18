@@ -1,15 +1,3 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: nominatim
-spec:
-  ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
-  selector:
-    app: nominatim
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -33,7 +21,7 @@ spec:
         - name: NOMINATIM_MODE
           value: RESTORE
         - name: NOMINATIM_DATA_LABEL
-          value: germany
+          value: germany-17-04-2020
         - name: NOMINATIM_SA_KEY_PATH
           value: "/etc/nominatim-secret-volume/nominatim-sa.json"
         - name: NOMINATIM_PROJECT_ID
