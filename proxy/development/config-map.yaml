@@ -157,6 +157,12 @@ data:
 
       # This location references every path
       location / {
+        # Redirect http to https if the connection was made with http at the proxy level
+        # https://serverfault.com/a/767930
+        if ($http_x_forwarded_proto = "http") {
+            return 301 https://$host$request_uri;
+        }
+
         proxy_pass          http://documentation-service;
         proxy_http_version  1.1;
         proxy_cache_bypass  $http_upgrade;
