@@ -19,10 +19,11 @@ spec:
         app: prometheus
         environment: monitoring
     spec:
+      serviceAccountName: prometheus
       initContainers:
         - name: prometheus-data-permission-fix
           image: busybox
-          command: ["/bin/chmod","-R","777", "/prometheus"]
+          command: ["/bin/chmod", "-R", "777", "/prometheus"]
           volumeMounts:
             - name: storage-volume
               mountPath: /prometheus
@@ -43,4 +44,4 @@ spec:
            name: prometheus-config
         - name: storage-volume
           persistentVolumeClaim:
-              claimName: prometheus
+            claimName: prometheus
