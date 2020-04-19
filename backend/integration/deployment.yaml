@@ -40,7 +40,7 @@ spec:
         - name: keycloak.enabled
           value: "true"
         - name: app.search-api-url
-          value: https://nominatim.openstreetmap.org
+          value: http://nominatim
         - name: keycloak.credentials.secret
           valueFrom:
             secretKeyRef:
