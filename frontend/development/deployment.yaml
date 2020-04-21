@@ -26,6 +26,13 @@ spec:
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
+        resources:
+            limits:
+              cpu: 10m
+              memory: 10Mi
+            requests:
+              cpu: 5m
+              memory: 5Mi
         volumeMounts:
           - name: frontend-development-config
             mountPath: /usr/share/nginx/html/config/config.json

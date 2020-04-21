@@ -30,12 +30,12 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
           resources:
-            requests:
-              memory: "20Mi"
-              cpu: "10m"
             limits:
-              memory: "100Mi"
-              cpu: "100m"
+              cpu: 10m
+              memory: 10Mi
+            requests:
+              cpu: 5m
+              memory: 5Mi
           volumeMounts:
             - name: frontend-integration-config
               mountPath: /usr/share/nginx/html/config/config.json

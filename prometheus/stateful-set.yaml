@@ -38,6 +38,13 @@ spec:
               subPath: prometheus.yml
             - name: storage-volume
               mountPath: /prometheus
+          resources:
+            limits:
+              cpu: 200m
+              memory: 500Mi
+            requests:
+              cpu: 70m
+              memory: 450Mi
       volumes:
         - name: config-volume
           configMap:

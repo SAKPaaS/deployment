@@ -1,18 +1,18 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nominatim
+  labels:
+    app: nominatim
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: keycloak
-      environment: production
+      app: nominatim
   template:
     metadata:
       labels:
         app: nominatim
-        environment: production
     spec:
       volumes:
       - name: nominatim-secret-volume
@@ -44,3 +44,10 @@ spec:
             port: 8080
           initialDelaySeconds: 30
           timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 200m
+            memory: 500Mi
+          requests:
+            cpu: 20m
+            memory: 150Mi

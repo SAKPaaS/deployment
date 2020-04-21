@@ -33,6 +33,13 @@ spec:
             - name: grafana-conf
               mountPath: /etc/grafana/grafana.ini
               subPath: grafana.ini
+          resources:
+            limits:
+              cpu: 30m
+              memory: 40Mi
+            requests:
+              cpu: 10m
+              memory: 30Mi
       volumes:
         - name: grafana-conf
           configMap:

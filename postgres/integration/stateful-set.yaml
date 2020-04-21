@@ -33,6 +33,13 @@ spec:
         volumeMounts:
           - mountPath: /var/lib/postgresql/data
             name: postgres-integration-pvc
+        resources:
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+            cpu: 25m
+            memory: 120Mi
   volumeClaimTemplates:
   - metadata:
       name: postgres-integration-pvc
