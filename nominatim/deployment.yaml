@@ -5,7 +5,8 @@ metadata:
   labels:
     app: nominatim
 spec:
-  replicas: 1
+  # Quick Fix: Da kopieren auf Google Geld kostet
+  replicas: 0
   selector:
     matchLabels:
       app: nominatim
