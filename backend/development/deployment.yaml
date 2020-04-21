@@ -4,16 +4,19 @@ metadata:
   name: sakpaas-backend-development
   labels:
     app: backend-development
+    environment: development
     base: spring
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: backend-development
+      environment: development
   template:
     metadata:
       labels:
         app: backend-development
+        environment: development
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9000'
