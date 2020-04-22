@@ -35,10 +35,10 @@ spec:
               subPath: grafana.ini
           resources:
             limits:
-              cpu: 200m
+              cpu: 500m
               memory: 40Mi
             requests:
-              cpu: 50m
+              cpu: 25m
               memory: 30Mi
       volumes:
         - name: grafana-conf
