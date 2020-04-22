@@ -17,6 +17,7 @@ spec:
       labels:
         app: backend-development
         environment: development
+        base: spring
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9000'
