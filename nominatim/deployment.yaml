@@ -5,8 +5,7 @@ metadata:
   labels:
     app: nominatim
 spec:
-  # Quick Fix: Da kopieren auf Google Geld kostet
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: nominatim
@@ -47,7 +46,7 @@ spec:
           timeoutSeconds: 1
         resources:
           limits:
-            cpu: 200m
+            cpu: 600m
             memory: 250Mi
           requests:
             cpu: 20m
