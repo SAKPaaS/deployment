@@ -3,7 +3,7 @@ kind: ManagedCertificate
 metadata:
   name: backend-integration-certificate
   labels:
-    app: backend-integration
+    app: backend
     environment: integration
 spec:
   domains:

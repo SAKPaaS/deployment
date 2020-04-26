@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-integration-support
+  labels:
+    app: backend-support
+    environment: integration
+    base: support
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: backend-support
+      environment: integration
+  template:
+    metadata:
+      labels:
+        app: backend-support
+        environment: integration
+        base: support
+    spec:
+      containers:
+        - name: database
+          image: postgres
+          imagePullPolicy: Always
+          env:
+            - name: POSTGRES_PASSWORD
+              value: test123
+            - name: PGDATA
+              value: /var/lib/postgresql/data/db
+          ports:
+            - containerPort: 5432
+          livenessProbe:
+            exec:
+              command: ["pg_isready", "-h", "localhost", "-U", "postgres"]
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 25m
+              memory: 120Mi
+        - name: frontend
+          image: sakpaas/frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            limits:
+              cpu: 10m
+              memory: 10Mi
+            requests:
+              cpu: 5m
+              memory: 5Mi
+          volumeMounts:
+            - name: backend-integration-support
+              mountPath: /usr/share/nginx/html/config/config.json
+              subPath: config.json
+              readOnly: true
+            - name: backend-integration-support
+              mountPath: /usr/share/nginx/html/.well-known/assetlinks.json
+              subPath: assetlinks.json
+              readOnly: true
+            - name: backend-integration-support
+              mountPath: /usr/share/nginx/html/robots.txt
+              subPath: robots.txt
+              readOnly: true
+      volumes:
+        - name: backend-integration-support
+          configMap:
+            name: backend-integration-support

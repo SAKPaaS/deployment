@@ -3,13 +3,15 @@ kind: Service
 metadata:
   name: backend-integration
   labels:
-    app: backend-integration
+    app: backend
     environment: integration
 spec:
   selector:
-    app: backend-integration
+    app: backend
+    environment: integration
   type: NodePort
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
+    - name: backend
+      protocol: TCP
+      port: 80
+      targetPort: 8080

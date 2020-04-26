@@ -1,64 +1,65 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sakpaas-backend-integration
+  name: backend-integration
   labels:
-    app: backend-integration
+    app: backend
     environment: integration
     base: spring
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend-integration
+      app: backend
       environment: integration
   template:
     metadata:
       labels:
-        app: backend-integration
+        app: backend
         environment: integration
+        base: spring
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9000'
         prometheus.io/path: '/actuator/prometheus'
     spec:
       containers:
-      - name: backend
-        image: sakpaas/backend:integration
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        env:
-        - name: spring.datasource.url
-          value: jdbc:postgresql://postgres-integration:5432/postgres
-        - name: spring.datasource.username
-          value: postgres
-        - name: spring.datasource.password
-          value: test123
-        - name: keycloak.auth-server-url
-          value: https://auth.happyhamster.org/auth/
-        - name: keycloak.realm
-          value: happyhamster
-        - name: keycloak.resource
-          value: backend
-        - name: keycloak.enabled
-          value: "true"
-        - name: app.search-api-url
-          value: http://nominatim
-        - name: keycloak.credentials.secret
-          valueFrom:
-            secretKeyRef:
-              name: keycloak-secret
-              key: key.txt
-        readinessProbe:
-          httpGet:
-            port: 8080
-          failureThreshold: 20
-          periodSeconds: 10
-        resources:
-          limits:
-            cpu: 100m
-            memory: 300Mi
-          requests:
-            cpu: 25m
-            memory: 250Mi
+        - name: backend
+          image: sakpaas/backend:integration
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: spring.datasource.url
+              value: jdbc:postgresql://backend-integration-support:5432/postgres
+            - name: spring.datasource.username
+              value: postgres
+            - name: spring.datasource.password
+              value: test123
+            - name: keycloak.auth-server-url
+              value: https://auth.happyhamster.org/auth/
+            - name: keycloak.realm
+              value: happyhamster
+            - name: keycloak.resource
+              value: backend
+            - name: keycloak.enabled
+              value: "true"
+            - name: app.search-api-url
+              value: http://nominatim
+            - name: keycloak.credentials.secret
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-secret
+                  key: key.txt
+          readinessProbe:
+            httpGet:
+              port: 8080
+            failureThreshold: 20
+            periodSeconds: 10
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 300Mi
+            requests:
+              cpu: 25m
+              memory: 250Mi
