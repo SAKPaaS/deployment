@@ -8,7 +8,7 @@ metadata:
 data:
   config.json: |-
     {
-      "rootUrl": "https://api.int.happyhamster.org"
+      "rootUrl": "https://api.int.happyhamster.org/api"
     }
   assetlinks.json: |-
     [{
