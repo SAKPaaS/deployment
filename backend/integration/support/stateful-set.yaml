@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: backend-integration-support
   labels:
@@ -8,6 +8,7 @@ metadata:
     base: support
 spec:
   replicas: 0
+  serviceName: backend-integration-support
   selector:
     matchLabels:
       app: backend-support
@@ -42,6 +43,10 @@ spec:
             requests:
               cpu: 25m
               memory: 120Mi
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: storage-volume
+
         - name: frontend
           image: sakpaas/frontend:latest
           imagePullPolicy: Always
@@ -60,23 +65,29 @@ spec:
               cpu: 5m
               memory: 5Mi
           volumeMounts:
-            - name: backend-integration-support
+            - name: config-volume
               mountPath: /usr/share/nginx/html/config/config.json
               subPath: config.json
               readOnly: true
-            - name: backend-integration-support
+            - name: config-volume
               mountPath: /usr/share/nginx/html/.well-known/assetlinks.json
               subPath: assetlinks.json
               readOnly: true
-            - name: backend-integration-support
+            - name: config-volume
               mountPath: /usr/share/nginx/html/robots.txt
               subPath: robots.txt
               readOnly: true
-            - name: backend-integration-support
+            - name: config-volume
               mountPath: /docker-entrypoint-initdb.d/init-sql-bugfix.sql
               subPath: init-sql-bugfix.sql
               readOnly: true
+
       volumes:
-        - name: backend-integration-support
+        - name: config-volume
           configMap:
             name: backend-integration-support
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: backend-integration-support
+
+  volumeClaimTemplates: []

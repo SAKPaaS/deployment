@@ -6,4 +6,5 @@ commonLabels:
   environment: integration
 
 resources:
-  - deployment.yaml
+  - stateful-set.yaml
+  - persistent-volume-claim.yaml

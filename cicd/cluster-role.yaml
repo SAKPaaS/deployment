@@ -4,5 +4,8 @@ metadata:
   name: cicd-cluster-role
 rules:
   - apiGroups: ["", "extensions", "apps"]
-    resources: ["deployments", "replicasets", "pods"]
+    resources: ["deployments", "replicasets", "pods", "statefulsets"]
+    verbs: ["*"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
     verbs: ["*"]
