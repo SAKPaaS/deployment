@@ -3,7 +3,7 @@ kind: ManagedCertificate
 metadata:
   name: frontend-integration-certificate
   labels:
-    app: frontend-integration
+    app: frontend
     environment: integration
 spec:
   domains:

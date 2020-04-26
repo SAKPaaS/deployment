@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sakpaas-frontend-integration
+  name: frontend-integration
   labels:
-    app: frontend-integration
+    app: frontend
     environment: integration
     base: nginx
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
-      app: frontend-integration
+      app: frontend
       environment: integration
   template:
     metadata:
       labels:
-        app: frontend-integration
+        app: frontend
         environment: integration
+        base: nginx
     spec:
       containers:
         - name: frontend
@@ -37,19 +38,19 @@ spec:
               cpu: 5m
               memory: 5Mi
           volumeMounts:
-            - name: frontend-integration-config
+            - name: frontend-integration
               mountPath: /usr/share/nginx/html/config/config.json
               subPath: config.json
               readOnly: true
-            - name: frontend-integration-config
+            - name: frontend-integration
               mountPath: /usr/share/nginx/html/.well-known/assetlinks.json
               subPath: assetlinks.json
               readOnly: true
-            - name: frontend-integration-config
+            - name: frontend-integration
               mountPath: /usr/share/nginx/html/robots.txt
               subPath: robots.txt
               readOnly: true
       volumes:
-        - name: frontend-integration-config
+        - name: frontend-integration
           configMap:
-            name: frontend-integration-config
+            name: frontend-integration

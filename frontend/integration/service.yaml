@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-integration-service
+  name: frontend-integration
   labels:
-    app: frontend-integration
+    app: frontend
     environment: integration
 spec:
   selector:
-    app: frontend-integration
-    environment: integration
+      app: frontend
+      environment: integration
   type: NodePort
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
+    - protocol: TCP
+      port: 80
+      targetPort: 80
