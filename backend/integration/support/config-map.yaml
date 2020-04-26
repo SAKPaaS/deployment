@@ -10,6 +10,7 @@ data:
     {
       "rootUrl": "https://api.int.happyhamster.org/api"
     }
+
   assetlinks.json: |-
     [{
       "relation": ["delegate_permission/common.handle_all_urls"],
@@ -19,6 +20,10 @@ data:
         "sha256_cert_fingerprints":["enter_fingerprint_here"]
       }
     }]
+
   robots.txt: |-
     User-agent: *
     Disallow: /
+
+  init-sql-bugfix.sql: |-
+    CREATE SEQUENCE hibernate_sequence START 1;

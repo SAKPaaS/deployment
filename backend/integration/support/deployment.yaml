@@ -72,6 +72,10 @@ spec:
               mountPath: /usr/share/nginx/html/robots.txt
               subPath: robots.txt
               readOnly: true
+            - name: backend-integration-support
+              mountPath: /docker-entrypoint-initdb.d/init-sql-bugfix.sql
+              subPath: init-sql-bugfix.sql
+              readOnly: true
       volumes:
         - name: backend-integration-support
           configMap:
