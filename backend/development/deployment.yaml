@@ -30,6 +30,8 @@ spec:
         ports:
         - containerPort: 8080
         env:
+        - name: logging.level.org.springframework.web
+          value: INFO
         - name: spring.datasource.url
           value: jdbc:postgresql://postgres-dev:5432/postgres
         - name: spring.datasource.username
@@ -45,7 +47,7 @@ spec:
         - name: keycloak.enabled
           value: "true"
         - name: app.search-api-url
-          value: http://nominatim
+          value: http://nominatim/
         - name: keycloak.credentials.secret
           valueFrom:
             secretKeyRef:
