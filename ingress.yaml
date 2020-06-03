@@ -31,45 +31,45 @@ spec:
       - backend:
           serviceName: welcome-service
           servicePort: 80
-  - host: stats.happyhamster.org
-    http:
-      paths:
-      - backend:
-          serviceName: proxy-development-service
-          servicePort: 80
-  - host: dev.happyhamster.org
-    http:
-      paths:
-      - backend:
-          serviceName: proxy-development-service
-          servicePort: 80
-  - host: api.dev.happyhamster.org
-    http:
-      paths:
-      - backend:
-          serviceName: proxy-development-service
-          servicePort: 80
-  - host: int.happyhamster.org
-    http:
-      paths:
-      - backend:
-          serviceName: proxy-development-service
-          servicePort: 80
-  - host: api.int.happyhamster.org
-    http:
-      paths:
-      - backend:
-          serviceName: proxy-development-service
-          servicePort: 80
+  #- host: stats.happyhamster.org
+  #  http:
+  #    paths:
+  #    - backend:
+  #        serviceName: proxy-development-service
+  #        servicePort: 80
+  #- host: dev.happyhamster.org
+  #  http:
+  #    paths:
+  #    - backend:
+  #        serviceName: proxy-development-service
+  #        servicePort: 80
+  #- host: api.dev.happyhamster.org
+  #  http:
+  #    paths:
+  #    - backend:
+  #        serviceName: proxy-development-service
+  #        servicePort: 80
+  #- host: int.happyhamster.org
+  #  http:
+  #    paths:
+  #    - backend:
+  #        serviceName: proxy-development-service
+  #        servicePort: 80
+  #- host: api.int.happyhamster.org
+  #  http:
+  #    paths:
+  #    - backend:
+  #        serviceName: proxy-development-service
+  #        servicePort: 80
   - host: auth.happyhamster.org
     http:
       paths:
       - backend:
           serviceName: proxy-development-service
           servicePort: 80
-  - host: docs.happyhamster.org
-    http:
-      paths:
-      - backend:
-          serviceName: proxy-development-service
-          servicePort: 80
+  #- host: docs.happyhamster.org
+  #  http:
+  #    paths:
+  #    - backend:
+  #        serviceName: proxy-development-service
+  #        servicePort: 80
