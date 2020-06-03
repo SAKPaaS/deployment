@@ -150,7 +150,7 @@ data:
     # keycloak
     server {
       # HTTP on port 80
-      listen       80;
+      listen       80 default_server;
       server_name  auth.happyhamster.org;
 
       # This location references every path

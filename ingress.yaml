@@ -68,8 +68,8 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: keycloak-service
-          servicePort: 443
+          serviceName: proxy-development-service
+          servicePort: 80
   #- host: docs.happyhamster.org
   #  http:
   #    paths:
