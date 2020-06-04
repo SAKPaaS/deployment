@@ -7,7 +7,7 @@ metadata:
     environment: development
     base: spring
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: backend-development
